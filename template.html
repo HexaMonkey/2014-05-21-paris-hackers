@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="res/favicon.ico">
+    <script src="app.js"></script>
+    <title>{{ title }}</title>
+    </head>
+    <body>
+    <div class="slide back"></div>
+    {% for slide in slides %}
+    <div class="slide front {{ slide.class }}">
+        <div class="content">
+        <h2>{{- slide.title -}}</h2>
+        {{- slide.content|safe -}}
+        </div>
+        <div class="footer">
+            <div class="breadcrumb">
+                <span class="slideno">
+                {{ loop.index }} / {{ slides|length() }}
+                </span>
+                <span class="section">
+                {{ slide.section }}
+                </span>
+            </div>
+            <img class="footer_logo" src="res/footer_logo.png">
+        </div>
+    </div>
+    {% endfor %}
+</html>
