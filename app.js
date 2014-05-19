@@ -47,12 +47,14 @@ function onLoad() {
             //bounds = images[0].getBoundingClientRect(); // does not work when zooming
             var img = images[0];
             var h = (600 - img.offsetTop) >> 0;
-            var w = h * img.offsetWidth / img.offsetHeight;
-            if (w > 900) {
-                w = 900;
-                h = w * img.offsetHeight / img.offsetWidth;
-            }
-            img.setAttribute("style", "height:" + h + "px; margin: 20px auto");
+            if (img.offsetHeight > h || img.offsetWidth > 900) {
+				var w = h * img.offsetWidth / img.offsetHeight;
+				if (w > 900) {
+					w = 900;
+					h = w * img.offsetHeight / img.offsetWidth;
+				}
+				img.setAttribute("style", "height:" + h + "px; margin: 20px auto");
+			}
         }
     }
     onHashChange();
